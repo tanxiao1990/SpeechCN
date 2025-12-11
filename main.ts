@@ -599,13 +599,13 @@ namespace Speech {
     // 第一个参数的枚举：xiang1ei1 / xiang1bi1 / xiang1ci1 / xiang1gou1
     export enum Xiang_Type {
         //% blockId="xiang1ei1" block="xiang1ei1"
-        xiang1ei1 = 0,
+        湘A = 0,
         //% blockId="xiang1bi1" block="xiang1bi1"
-        xiang1bi1 = 1,
+        湘B = 1,
         //% blockId="xiang1ci1" block="xiang1ci1"
-        xiang1ci1 = 2,
+        湘C = 2,
         //% blockId="xiang1gou1" block="xiang1gou1"
-        xiang1gou1 = 3
+        湘J = 3
     }
 
     // 第二个参数的枚举：qq683 / 510ph / k228g / t82n9
@@ -624,10 +624,10 @@ namespace Speech {
     // 将第一个枚举映射为字符串
     function mapFirstText(first: Xiang_Type): string {
         switch (first) {
-            case Xiang_Type.xiang1ei1: return "xiang1ei1";
-            case Xiang_Type.xiang1bi1: return "xiang1bi1";
-            case Xiang_Type.xiang1ci1: return "xiang1ci1";
-            case Xiang_Type.xiang1gou1: return "xiang1gou1";
+            case Xiang_Type.湘A: return "xiang1ei1";
+            case Xiang_Type.湘B: return "xiang1bi1";
+            case Xiang_Type.湘C: return "xiang1xi1";
+            case Xiang_Type.湘J: return "xiang1gou1";
         }
         return "xiang1ei1";
     }
@@ -650,7 +650,7 @@ namespace Speech {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Speak_Che_Pai(first: Xiang_Type, second: QQ_Type): void {
         // 按用户示例使用命名空间前缀调用
-        Speech.SetSpeed(5);
+        Speech.SetSpeed(4);
         Speech.SetSpell(Speech.Spell_Type.Spell_Enable);
 
         // 说第一个枚举对应的字符串
@@ -676,7 +676,7 @@ namespace Speech {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Speak_Che_And_Pai(first: string, second: string): void {
         // 按用户示例使用命名空间前缀调用
-        Speech.SetSpeed(5);
+        Speech.SetSpeed(4);
         Speech.SetSpell(Speech.Spell_Type.Spell_Enable);
 
         Speech.Speech_Text(first);
