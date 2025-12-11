@@ -5,6 +5,8 @@
 
   "Speech.Speech_Text|block": "语音播报文本|为 %speech_text",
   "Speech.Speech_Text_Cn|block": "中英文混合播报文本|为 %speech_text",
+  "Speech.Speak_Che_Pai|block": "播放预选车牌|为 %first 和 %second",
+  "Speech.Speak_Che_And_Pai|block": "播放车牌|为 %first 和 %second",
   
   "Speech.ChipStatus_Type.ChipStatus_InitSuccessful|block": "初始化成功回传",
   "Speech.ChipStatus_Type.ChipStatus_CorrectCommand|block": "收到正确的命令帧回传",

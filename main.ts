@@ -596,5 +596,101 @@ namespace Speech {
     }
 
 
+    // 第一个参数的枚举：xiang1ei1 / xiang1bi1 / xiang1ci1 / xiang1gou1
+    export enum Xiang_Type {
+        //% blockId="xiang1ei1" block="xiang1ei1"
+        xiang1ei1 = 0,
+        //% blockId="xiang1bi1" block="xiang1bi1"
+        xiang1bi1 = 1,
+        //% blockId="xiang1ci1" block="xiang1ci1"
+        xiang1ci1 = 2,
+        //% blockId="xiang1gou1" block="xiang1gou1"
+        xiang1gou1 = 3
+    }
+
+    // 第二个参数的枚举：qq683 / 510ph / k228g / t82n9
+    // 注意：枚举成员不能以数字开头，以下以前缀形式命名，但 block 显示为原始字符串
+    export enum QQ_Type {
+        //% blockId="qq683" block="qq683"
+        qq683 = 0,
+        //% blockId="510ph" block="510ph"
+        _510ph = 1,
+        //% blockId="k228g" block="k228g"
+        k228g = 2,
+        //% blockId="t82n9" block="t82n9"
+        t82n9 = 3
+    }
+
+    // 将第一个枚举映射为字符串
+    function mapFirstText(first: Xiang_Type): string {
+        switch (first) {
+            case Xiang_Type.xiang1ei1: return "xiang1ei1";
+            case Xiang_Type.xiang1bi1: return "xiang1bi1";
+            case Xiang_Type.xiang1ci1: return "xiang1ci1";
+            case Xiang_Type.xiang1gou1: return "xiang1gou1";
+        }
+        return "xiang1ei1";
+    }
+
+    // 将第二个枚举映射为字符串
+    function mapSecondText(second: QQ_Type): string {
+        switch (second) {
+            case QQ_Type.qq683: return "qq683";
+            case QQ_Type._510ph: return "510ph";
+            case QQ_Type.k228g: return "k228g";
+            case QQ_Type.t82n9: return "t82n9";
+        }
+        return "qq683";
+    }
+
+    //% blockId=Speak_Che_Pai block="Speak_Che_Pai|first %first second %second"
+    //% weight=90
+    //% blockGap=10
+    //% color="#3CB371"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Speak_Che_Pai(first: Xiang_Type, second: QQ_Type): void {
+        // 按用户示例使用命名空间前缀调用
+        Speech.SetSpeed(5);
+        Speech.SetSpell(Speech.Spell_Type.Spell_Enable);
+
+        // 说第一个枚举对应的字符串
+        Speech.Speech_Text(mapFirstText(first));
+
+        // 等待芯片空闲
+        Speech.Wait_XFS_Status(Speech.ChipStatus_Type.ChipStatus_Idle);
+
+        // 关闭拼读，按字母和数字读法
+        Speech.SetSpell(Speech.Spell_Type.Spell_Disable);
+        Speech.SetArticulation(Speech.Articulation_Type.Articulation_Letter);
+        Speech.SetNumberHandle(Speech.NumberHandle_Type.NumberHandle_Number);
+
+        // 说第二个枚举对应的字符串
+        Speech.Speech_Text(mapSecondText(second));
+    }
+
+
+    //% blockId=Speak_Che_And_Pai block="Speak_Che_And_Pai|first %first second %second"
+    //% weight=90
+    //% blockGap=10
+    //% color="#3CB371"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Speak_Che_And_Pai(first: string, second: string): void {
+        // 按用户示例使用命名空间前缀调用
+        Speech.SetSpeed(5);
+        Speech.SetSpell(Speech.Spell_Type.Spell_Enable);
+
+        Speech.Speech_Text(first);
+
+        // 等待芯片空闲
+        Speech.Wait_XFS_Status(Speech.ChipStatus_Type.ChipStatus_Idle);
+
+        // 关闭拼读，按字母和数字读法
+        Speech.SetSpell(Speech.Spell_Type.Spell_Disable);
+        Speech.SetArticulation(Speech.Articulation_Type.Articulation_Letter);
+        Speech.SetNumberHandle(Speech.NumberHandle_Type.NumberHandle_Number);
+
+        Speech.Speech_Text(second);
+    }
+
  
 }
