@@ -51,6 +51,56 @@ namespace Speech {
         }
     }
 
+
+
+
+    // 将单个字符转换为 GB2312 编码（支持常用汉字）
+    function charToGB2312(ch: string): number[] {
+        // 简易 GB2312 对照表（可按需扩展）
+        const table: { [key: string]: number[] } = {
+            "温": [0xCE, 0xC2],
+            "度": [0xB6, 0xC8],
+            "是": [0xCA, 0xC7],
+            "你": [0xC4, 0xE3],
+            "好": [0xBA, 0xC3],
+            "湘": [0xCF, 0xE6],
+            // 你要说的字可以继续往下加……
+        }
+
+        if (table[ch]) return table[ch];
+
+        // 英文或数字，直接单字节
+        let code = ch.charCodeAt(0);
+        return [code];
+    }
+
+    //% blockId=Speech_Text_Cn block="Speech_Text_Cn|speech_text %speech_text"
+    //% weight=99
+    //% blockGap=10
+    export function Speech_Text_Cn(speech_text: string): void {
+        let bytes: number[] = [];
+
+        // 把整个字符串转换成编码后的字节流
+        for (let ch of speech_text) {
+            let arr = charToGB2312(ch);
+            for (let b of arr) bytes.push(b);
+        }
+    
+        let num = bytes.length + 2;
+        let length_HH = num >> 8;
+        let length_LL = num & 0xff;
+        let commond = 0x01;
+    
+        let head = [DATA_HEAD, length_HH, length_LL, commond, 0x00];
+        IIC_Writes(head, 5);
+    
+        // 发送内容
+        for (let b of bytes) {
+            pins.i2cWriteNumber(I2C_ADDR, b, NumberFormat.UInt8LE, false);
+        }
+    }
+
+
     //% blockId=Speech_Text block="Speech_Text|speech_text %speech_text"
     //% weight=99
     //% blockGap=10
