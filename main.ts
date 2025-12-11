@@ -596,16 +596,16 @@ namespace Speech {
     }
 
 
-    // 第一个参数的枚举：xiang1ei1 / xiang1bi1 / xiang1ci1 / xiang1gou1
+    // 第一个参数的枚举：xiang1ei1 / xiang1bi4 / xiang1xi1 / xiang1gou1
     export enum Xiang_Type {
-        //% blockId="xiang1ei1" block="xiang1ei1"
-        湘A = 0,
-        //% blockId="xiang1bi1" block="xiang1bi1"
-        湘B = 1,
-        //% blockId="xiang1ci1" block="xiang1ci1"
-        湘C = 2,
-        //% blockId="xiang1gou1" block="xiang1gou1"
-        湘J = 3
+        //% blockId="xiang1ei1" block="湘A"
+        xiang1ei1 = 0,
+        //% blockId="xiang1bi4" block="湘B"
+        xiang1bi4 = 1,
+        //% blockId="xiang1xi1" block="湘C"
+        xiang1xi1 = 2,
+        //% blockId="xiang1gou1" block="湘J"
+        xiang1gou1 = 3
     }
 
     // 第二个参数的枚举：qq683 / 510ph / k228g / t82n9
@@ -624,10 +624,10 @@ namespace Speech {
     // 将第一个枚举映射为字符串
     function mapFirstText(first: Xiang_Type): string {
         switch (first) {
-            case Xiang_Type.湘A: return "xiang1ei1";
-            case Xiang_Type.湘B: return "xiang1bi1";
-            case Xiang_Type.湘C: return "xiang1xi1";
-            case Xiang_Type.湘J: return "xiang1gou1";
+            case Xiang_Type.xiang1ei1: return "xiang1ei1";
+            case Xiang_Type.xiang1bi4: return "xiang1bi4";
+            case Xiang_Type.xiang1xi1: return "xiang1xi1";
+            case Xiang_Type.xiang1gou1: return "xiang1gou1";
         }
         return "xiang1ei1";
     }
