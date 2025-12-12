@@ -5,7 +5,7 @@ load dependency
 "Speech": "file:../pxt-Speech"
 */
 
-//% color="#3CB371" weight=20 icon="\uf0a1"
+//% color="#3CB371" weight=20 icon="\uf0a1" block="语音播报"
 namespace Speech {
     
     const DATA_HEAD = 0xFD                  //帧头
