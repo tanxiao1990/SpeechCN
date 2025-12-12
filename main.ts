@@ -661,7 +661,7 @@ namespace Speech {
 
         // 关闭拼读，按字母和数字读法
         Speech.SetSpell(Speech.Spell_Type.Spell_Disable);
-        Speech.SetArticulation(Speech.Articulation_Type.Articulation_Letter);
+        SetArticulation(Speech.Articulation_Type.Articulation_Letter);
         Speech.SetNumberHandle(Speech.NumberHandle_Type.NumberHandle_Number);
 
         // 说第二个枚举对应的字符串
@@ -686,7 +686,7 @@ namespace Speech {
 
         // 关闭拼读，按字母和数字读法
         Speech.SetSpell(Speech.Spell_Type.Spell_Disable);
-        Speech.SetArticulation(Speech.Articulation_Type.Articulation_Letter);
+        SetArticulation(Speech.Articulation_Type.Articulation_Letter);
         Speech.SetNumberHandle(Speech.NumberHandle_Type.NumberHandle_Number);
 
         Speech.Speech_Text(second);
