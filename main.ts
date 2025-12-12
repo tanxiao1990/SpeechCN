@@ -36,7 +36,7 @@ namespace Speech {
     //% weight=99
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12  
-    export function Set_IICAddress(i2c_address: I2C_ADDR_Select): void {
+    function Set_IICAddress(i2c_address: I2C_ADDR_Select): void {
         I2C_ADDR = i2c_address;
     }
 
@@ -77,7 +77,7 @@ namespace Speech {
     //% blockId=Speech_Text_Cn block="Speech_Text_Cn|speech_text %speech_text"
     //% weight=99
     //% blockGap=10
-    export function Speech_Text_Cn(speech_text: string): void {
+    function Speech_Text_Cn(speech_text: string): void {
         let bytes: number[] = [];
 
         // 把整个字符串转换成编码后的字节流
@@ -147,7 +147,7 @@ namespace Speech {
     //% weight=99
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12  
-    export function GetChipStatus(): number {
+    function GetChipStatus(): number {
         let AskState:number[] = [DATA_HEAD,0x00,0x01,0x21]; 
         
         IIC_Writes(AskState,4);
@@ -204,7 +204,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetStyle(style_type:Style_Type): void { 
+    function SetStyle(style_type:Style_Type): void { 
         
         if(style_type == 1)
         {
@@ -273,7 +273,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetArticulation(articulation_type:Articulation_Type): void { 
+    function SetArticulation(articulation_type:Articulation_Type): void { 
         
         if(articulation_type == 0)
         {
@@ -431,7 +431,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetZeroPronunciation(zeropronunciation_type:ZeroPronunciation_Type): void { 
+    function SetZeroPronunciation(zeropronunciation_type:ZeroPronunciation_Type): void { 
         
         if(zeropronunciation_type == 0)
         {
@@ -461,7 +461,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetNamePronunciation(namepronunciation_type:NamePronunciation_Type): void { 
+    function SetNamePronunciation(namepronunciation_type:NamePronunciation_Type): void { 
         
         if(namepronunciation_type == 0)
         {
@@ -497,7 +497,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetIntonation(intonation:number): void { 
+    function SetIntonation(intonation:number): void { 
         
         SetBase("[t"+intonation+"]");
         while(GetChipStatus() !=  0x4F)
@@ -533,7 +533,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetOnePronunciation(onepronunciation_type:OnePronunciation_Type): void { 
+    function SetOnePronunciation(onepronunciation_type:OnePronunciation_Type): void { 
         
         if(onepronunciation_type == 0)
         {
@@ -564,7 +564,7 @@ namespace Speech {
     //% blockGap=10
     //% color="#3CB371"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function SetRhythm(rhythm_type:Rhythm_Type): void { 
+    function SetRhythm(rhythm_type:Rhythm_Type): void { 
         
         if(rhythm_type == 0)
         {
